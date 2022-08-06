@@ -1,0 +1,32 @@
+{
+    "name": "ts-boilerplate",
+    "version": "1.0.0",
+    "author": "rahmat",
+    "license": "MIT",
+    "scripts": {
+        "dev": "ts-node ./src/app.ts"
+    },
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.1",
+        "express": "^4.18.1",
+        "joi": "^17.6.0",
+        "jsonwebtoken": "^8.5.1",
+        "luxon": "^3.0.1",
+        "pg": "^8.7.3",
+        "reflect-metadata": "^0.1.13",
+        "typeorm": "^0.3.7"
+    },
+    "devDependencies": {
+        "@types/cors": "^2.8.12",
+        "@types/express": "^4.17.13",
+        "@typescript-eslint/eslint-plugin": "^5.32.0",
+        "@typescript-eslint/parser": "^5.32.0",
+        "eslint": "^8.21.0",
+        "eslint-import-resolver-typescript": "^3.4.0",
+        "eslint-plugin-import": "^2.26.0",
+        "ts-node": "^10.9.1",
+        "typescript": "^4.7.4"
+    }
+}
