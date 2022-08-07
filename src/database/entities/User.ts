@@ -10,6 +10,9 @@ export class User extends BaseEntity {
     email!: string;
 
     @Column({ length: 64 })
+    password!: string;
+
+    @Column({ length: 64 })
     name!: string;
 
 }
