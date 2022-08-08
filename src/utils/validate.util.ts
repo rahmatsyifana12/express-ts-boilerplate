@@ -1,4 +1,5 @@
 import type { Request } from 'express';
+import { StatusCodes } from 'http-status-codes';
 import type { ObjectSchema } from 'joi';
 import { ResponseError } from './error.util';
 
@@ -13,7 +14,7 @@ export function validate<T>(
     const { value, error } = schema.validate(content);
 
     if (error) {
-        throw new ResponseError('Invalid object value', 400);
+        throw new ResponseError(error.message, StatusCodes.BAD_REQUEST);
     }
 
     return value;
