@@ -7,8 +7,6 @@ class AuthService {
     async create(rawUser: CreateUserType) {
         const user = User.create({ ...rawUser });
 
-        throw new ResponseError('Testing', 500);
-
         await User.save(user);
     }
 

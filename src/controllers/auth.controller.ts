@@ -1,5 +1,7 @@
 import type { Request, Response } from 'express';
+import { StatusCodes } from 'http-status-codes';
 import { authService } from '../services/auth.service';
+import { sendResponse } from '../utils/api.util';
 import type { ResponseError } from '../utils/error.util';
 import { validate } from '../utils/validate.util';
 import { createUserSchema } from '../validations/user.validate';
@@ -10,14 +12,17 @@ async function register(req: Request, res: Response) {
         await authService.create(body);
     } catch (error) {
         const err = error as ResponseError;
-        return res.status(err.statusCode).json({
-            status: 'fail',
+
+        return sendResponse(res, {
+            statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+            success: false,
             message: err.message
         });
     }
 
-    return res.status(200).json({
-        status: 'success',
+    return sendResponse(res, {
+        statusCode: StatusCodes.CREATED,
+        success: true,
         message: 'Successfully registered an account'
     });
 }
