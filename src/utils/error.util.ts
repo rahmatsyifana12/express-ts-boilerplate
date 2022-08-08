@@ -1,4 +1,5 @@
 import { StatusCodes } from 'http-status-codes';
+import { type APIResponse } from './api.util';
 
 export class ResponseError extends Error {
 
@@ -7,6 +8,14 @@ export class ResponseError extends Error {
     constructor(message: string, statusCode: StatusCodes) {
         super(message);
         this.statusCode = statusCode;
+    }
+
+    static toResponseBody(error: ResponseError): APIResponse {
+        return {
+            statusCode: error.statusCode,
+            success: false,
+            message: error.message
+        };
     }
 
 }
