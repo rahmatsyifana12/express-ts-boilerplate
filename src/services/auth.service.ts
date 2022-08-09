@@ -8,8 +8,6 @@ class AuthService {
     async create(rawUser: CreateUserType) {
         const user = User.create({ ...rawUser });
 
-        throw new ResponseError('Testing 123', StatusCodes.BAD_REQUEST);
-
         await User.save(user);
     }
 
