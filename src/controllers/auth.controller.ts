@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes';
 import { authService } from '../services/auth.service';
 import { sendResponse } from '../utils/api.util';
 import { validate } from '../utils/validate.util';
-import { createUserSchema } from '../validations/user.validate';
+import { createUserSchema, loginSchema } from '../validations/user.validate';
 
 class AuthController {
 
@@ -16,6 +16,10 @@ class AuthController {
             success: true,
             message: 'Successfully registered an account'
         });
+    }
+
+    async login(req: Request, res: Response) {
+        const body = validate(req, loginSchema, 'body');
     }
 
 }
