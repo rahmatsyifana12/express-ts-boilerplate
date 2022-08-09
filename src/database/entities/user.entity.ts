@@ -18,6 +18,9 @@ export class User extends BaseEntity {
     @Column({ length: 64 })
     name!: string;
 
+    @Column({ length: 255 })
+    refreshToken!: string;
+
     @OneToMany(() => Todo, (todo) => todo.user)
     todos!: Todo[];
 
