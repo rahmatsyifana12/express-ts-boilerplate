@@ -5,7 +5,11 @@
     "license": "MIT",
     "scripts": {
         "dev": "ts-node ./src/app.ts",
-        "jwt:generate": "ts-node ./scripts/jwt-generate.ts"
+        "jwt:generate": "ts-node ./scripts/jwt-generate.ts",
+        "migration:create": "ts-node ./scripts/migration.ts CREATE",
+        "migration:show": "ts-node ./scripts/migration.ts SHOW",
+        "migration:run": "ts-node ./scripts/migration.ts RUN",
+        "migration:revert": "ts-node ./scripts/migration.ts REVERT"
     },
     "dependencies": {
         "bcrypt": "^5.0.1",
