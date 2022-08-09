@@ -19,13 +19,13 @@ switch (subCommand) {
         command = `migration:create ${MIGRATIONS_DIR_PATH}/${args[0]}`;
         break;
     case 'SHOW':
-        command = `migration:show ${DATASOURCE_PATH}`;
+        command = `migration:show -d ${DATASOURCE_PATH}`;
         break;
     case 'RUN':
-        command = `migration:run ${DATASOURCE_PATH}`;
+        command = `migration:run -d ${DATASOURCE_PATH}`;
         break;
     case 'REVERT':
-        command = `migration:revert ${DATASOURCE_PATH}`;
+        command = `migration:revert -d ${DATASOURCE_PATH}`;
         break;
     default:
         throw Error('Invalid sub-command . . .');
