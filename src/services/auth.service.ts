@@ -36,6 +36,11 @@ class AuthService {
             throw new ResponseError(
                 'Password is incorrect!', StatusCodes.BAD_REQUEST);
         }
+
+        const accessToken = await this.generateToken(user, 'ACCESS');
+        const refreshToken = await this.generateToken(user, 'REFRESH');
+
+        return { accessToken, refreshToken };
     }
 
     async hashPassword(password: string) {
