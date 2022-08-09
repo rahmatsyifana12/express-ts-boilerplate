@@ -1,4 +1,4 @@
-import { User } from '../database/entities/User';
+import { User } from '../database/entities/user.entity';
 import type { CreateUserType } from '../validations/user.validate';
 
 class AuthService {
