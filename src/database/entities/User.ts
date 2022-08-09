@@ -9,9 +9,6 @@ export class User extends BaseEntity {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @OneToMany(() => Todo, (todo) => todo.user)
-    todos!: Todo[];
-
     @Column({ length: 64 })
     email!: string;
 
@@ -20,5 +17,8 @@ export class User extends BaseEntity {
 
     @Column({ length: 64 })
     name!: string;
+
+    @OneToMany(() => Todo, (todo) => todo.user)
+    todos!: Todo[];
 
 }

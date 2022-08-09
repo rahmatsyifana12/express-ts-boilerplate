@@ -9,10 +9,6 @@ export class Todo extends BaseEntity {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @ManyToOne(() => User, (user) => user.todos)
-    @JoinColumn({ name: 'user_id' })
-    user!: User;
-
     @Column({ name: 'user_id' })
     userId!: number;
 
@@ -21,5 +17,9 @@ export class Todo extends BaseEntity {
 
     @Column({ length: 64 })
     content!: string;
+
+    @ManyToOne(() => User, (user) => user.todos)
+    @JoinColumn({ name: 'user_id' })
+    user!: User;
 
 }
