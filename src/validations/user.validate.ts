@@ -6,6 +6,11 @@ export interface CreateUserType {
     password: string;
 }
 
+export interface LoginType {
+    email: string;
+    password: string;
+}
+
 export const createUserSchema = joi.object<CreateUserType>({
     email: joi.string()
         .email()
@@ -18,5 +23,14 @@ export const createUserSchema = joi.object<CreateUserType>({
 
     password: joi.string()
         .max(64)
+        .required()
+});
+
+export const loginSchema = joi.object<LoginType>({
+    email: joi.string()
+        .email()
+        .required(),
+
+    password: joi.string()
         .required()
 });
