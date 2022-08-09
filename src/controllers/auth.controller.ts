@@ -1,5 +1,7 @@
 import type { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import ms from 'ms';
+import config from '../configs/config';
 import { authService } from '../services/auth.service';
 import { sendResponse } from '../utils/api.util';
 import { validate } from '../utils/validate.util';
@@ -20,6 +22,19 @@ class AuthController {
 
     async login(req: Request, res: Response) {
         const body = validate(req, loginSchema, 'body');
+        const { accessToken, refreshToken } = await authService.login(body);
+
+        res.cookie('refreshToken', refreshToken, {
+            httpOnly: true,
+            maxAge: ms(config.jwt.refreshExpire)
+        });
+
+        return sendResponse(res, {
+            statusCode: StatusCodes.OK,
+            success: true,
+            message: 'Successfully logged in',
+            data: { accessToken }
+        });
     }
 
 }
