@@ -18,7 +18,7 @@ export class User extends BaseEntity {
     @Column({ length: 64 })
     name!: string;
 
-    @Column({ length: 255, nullable: true })
+    @Column({ name: 'refresh_token', length: 255, nullable: true })
     refreshToken!: string;
 
     @OneToMany(() => Todo, (todo) => todo.user)

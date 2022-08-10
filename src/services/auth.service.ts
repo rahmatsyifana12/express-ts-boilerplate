@@ -1,11 +1,12 @@
 import bcrypt from 'bcrypt';
+import type { JwtPayload } from 'jsonwebtoken';
 import jwt from 'jsonwebtoken';
 import { StatusCodes } from 'http-status-codes';
 import { User } from '../database/entities/user.entity';
 import { ResponseError } from '../utils/error.util';
 import type { RegisterType, LoginType } from '../validations/user.validate';
 import config from '../configs/config';
-import type { TokenType } from '../typings/auth';
+import type { TokenType, UserPayload } from '../typings/auth';
 import type { Request } from 'express';
 import { REFRESH_TOKEN_COOKIE } from '../utils/api.util';
 
@@ -50,7 +51,7 @@ class AuthService {
     }
 
     async generateToken(user: User, tokenType: TokenType) {
-        const payload = { id: user.id };
+        const payload = { userId: user.id };
         const options: jwt.SignOptions = {};
 
         let tokenSecret;
@@ -91,7 +92,26 @@ class AuthService {
     }
 
     async getTokenPayload(req: Request, tokenType: TokenType) {
+        const token = await this.getToken(req, tokenType);
+        if (!token) {
+            return;
+        }
 
+        let secret: string;
+        if (tokenType === 'ACCESS') {
+            secret = config.jwt.accessSecret;
+        } else {
+            secret = config.jwt.refreshSecret;
+        }
+
+        const user = await User.findOneBy({ refreshToken: token });
+        if (tokenType === 'REFRESH' && !user) {
+            return;
+        }
+
+        const payload = jwt.verify(token, secret) as JwtPayload;
+
+        return { userId: payload.userId } as UserPayload;
     }
 
 }
