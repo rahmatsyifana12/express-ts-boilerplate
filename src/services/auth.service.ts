@@ -90,6 +90,10 @@ class AuthService {
         return token;
     }
 
+    async getTokenPayload(req: Request, tokenType: TokenType) {
+
+    }
+
 }
 
 export const authService = new AuthService();
