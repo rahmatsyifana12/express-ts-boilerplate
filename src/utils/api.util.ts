@@ -1,7 +1,7 @@
 import type { Response } from 'express';
 import type { StatusCodes } from 'http-status-codes';
 
-export const TOKEN_NAME_COOKIE = 'refreshToken';
+export const REFRESH_TOKEN_COOKIE = 'refreshToken';
 
 export interface APIResponse {
     statusCode: StatusCodes;

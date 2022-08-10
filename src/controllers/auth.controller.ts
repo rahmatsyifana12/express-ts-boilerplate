@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes';
 import ms from 'ms';
 import config from '../configs/config';
 import { authService } from '../services/auth.service';
-import { sendResponse, TOKEN_NAME_COOKIE } from '../utils/api.util';
+import { REFRESH_TOKEN_COOKIE, sendResponse } from '../utils/api.util';
 import { validate } from '../utils/validate.util';
 import { registerSchema, loginSchema } from '../validations/user.validate';
 
@@ -24,7 +24,7 @@ class AuthController {
         const body = validate(req, loginSchema, 'body');
         const { accessToken, refreshToken } = await authService.login(body);
 
-        res.cookie(TOKEN_NAME_COOKIE, refreshToken, {
+        res.cookie(REFRESH_TOKEN_COOKIE, refreshToken, {
             httpOnly: true,
             maxAge: ms(config.jwt.refreshExpire)
         });

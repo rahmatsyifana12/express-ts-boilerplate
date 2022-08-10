@@ -6,6 +6,8 @@ import { ResponseError } from '../utils/error.util';
 import type { RegisterType, LoginType } from '../validations/user.validate';
 import config from '../configs/config';
 import type { TokenType } from '../typings/auth';
+import type { Request } from 'express';
+import { REFRESH_TOKEN_COOKIE } from '../utils/api.util';
 
 class AuthService {
 
@@ -66,6 +68,23 @@ class AuthService {
         if (tokenType === 'REFRESH') {
             user.refreshToken = token;
             await user.save();
+        }
+
+        return token;
+    }
+
+    async getToken(req: Request, tokenType: TokenType) {
+        let token: string;
+
+        if (tokenType === 'ACCESS') {
+            const rawToken = req.header('authorization');
+            if (!rawToken || !rawToken.startsWith('Bearer ')) {
+                return;
+            }
+
+            token = rawToken.split(' ')[1];
+        } else {
+            token = req.cookies(REFRESH_TOKEN_COOKIE);
         }
 
         return token;
