@@ -11,7 +11,7 @@ class AuthController {
 
     async register(req: Request, res: Response) {
         const body = validate(req, registerSchema, 'body');
-        await authService.login(body);
+        await authService.register(body);
 
         return sendResponse(res, {
             statusCode: StatusCodes.CREATED,
