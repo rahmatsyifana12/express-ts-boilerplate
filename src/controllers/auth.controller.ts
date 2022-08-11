@@ -37,6 +37,18 @@ class AuthController {
         });
     }
 
+    async refresh(req: Request, res: Response) {
+        const userPayload = await authService.getTokenPayload(req, 'ACCESS');
+        const accessToken = await authService.refresh(userPayload!);
+
+        return sendResponse(res, {
+            statusCode: StatusCodes.OK,
+            success: true,
+            message: 'Successfully generated a new access token',
+            data: { accessToken }
+        });
+    }
+
 }
 
 export const authController = new AuthController();
