@@ -91,7 +91,7 @@ class AuthService {
 
             token = rawToken.split(' ')[1];
         } else {
-            token = req.cookies(REFRESH_TOKEN_COOKIE);
+            token = req.cookies[REFRESH_TOKEN_COOKIE];
         }
 
         return token;
