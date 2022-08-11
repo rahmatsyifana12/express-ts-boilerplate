@@ -37,6 +37,19 @@ class AuthController {
         });
     }
 
+    async logout(req: Request, res: Response) {
+        const refreshToken = await authService.getToken(req, 'REFRESH');
+        await authService.logout(refreshToken!);
+
+        res.clearCookie(REFRESH_TOKEN_COOKIE);
+
+        return sendResponse(res, {
+            statusCode: StatusCodes.ACCEPTED,
+            success: true,
+            message: 'Successfully logged out'
+        });
+    }
+
     async refresh(req: Request, res: Response) {
         const userPayload = await authService.getTokenPayload(req, 'REFRESH');
         const accessToken = await authService.refresh(userPayload!);
