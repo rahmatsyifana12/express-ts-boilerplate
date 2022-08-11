@@ -74,7 +74,7 @@ class AuthService {
 
         if (tokenType === 'REFRESH') {
             user.refreshToken = token;
-            await user.save();
+            await User.save(user);
         }
 
         return token;
