@@ -70,7 +70,6 @@
         "no-new-wrappers": "error",
         "no-trailing-spaces": "error",
         "no-throw-literal": "error",
-        "no-await-in-loop": "error",
         "no-array-constructor": "error",
         "no-labels": "error",
         "no-label-var": "error",

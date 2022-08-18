@@ -5,6 +5,10 @@ export interface AddTodoType {
     content: string;
 }
 
+export interface TodoIdType {
+    todoId: number;
+}
+
 export const addTodoScehma = joi.object<AddTodoType>({
     title: joi.string()
         .max(64)
@@ -12,5 +16,10 @@ export const addTodoScehma = joi.object<AddTodoType>({
 
     content: joi.string()
         .max(64)
+        .required()
+});
+
+export const todoIdSchema = joi.object<TodoIdType>({
+    todoId: joi.number()
         .required()
 });

@@ -10,7 +10,8 @@
         "migration:create": "ts-node ./scripts/migration.ts CREATE",
         "migration:show": "ts-node ./scripts/migration.ts SHOW",
         "migration:run": "ts-node ./scripts/migration.ts RUN",
-        "migration:revert": "ts-node ./scripts/migration.ts REVERT"
+        "migration:revert": "ts-node ./scripts/migration.ts REVERT",
+        "seed": "ts-node ./scripts/seeder.ts"
     },
     "dependencies": {
         "@types/bcrypt": "^5.0.0",
