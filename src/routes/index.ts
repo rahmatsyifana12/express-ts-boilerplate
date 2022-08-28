@@ -10,6 +10,5 @@ router.post('/v1/auth/login', authController.login);
 router.post('v1/auth/refresh', authenticate('REFRESH'), authController.refresh);
 
 router.post('/v1/todos', authenticate('ACCESS'), todoController.add);
-router.get('/v1/todos/:todoId', todoController.getTodosAndComments);
 
 export default router;
