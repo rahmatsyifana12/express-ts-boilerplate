@@ -1,8 +1,7 @@
 import {
     BaseEntity,
-    Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn
+    Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn
 } from 'typeorm';
-import { Comment } from './comment.entity';
 import { User } from './user.entity';
 
 @Entity('todos')
@@ -23,8 +22,5 @@ export class Todo extends BaseEntity {
     @ManyToOne(() => User, (user) => user.todos)
     @JoinColumn({ name: 'user_id' })
     user!: User;
-
-    @OneToMany(() => Comment, (comment) => comment.todo)
-    comments!: Comment[];
 
 }
