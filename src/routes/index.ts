@@ -7,7 +7,8 @@ const router = Router();
 
 router.post('/v1/auth/register', authController.register);
 router.post('/v1/auth/login', authController.login);
-router.post('v1/auth/refresh', authenticate('REFRESH'), authController.refresh);
+router.post('/v1/auth/refresh', authenticate('REFRESH'),
+    authController.refresh);
 
 router.post('/v1/todos', authenticate('ACCESS'), todoController.add);
 

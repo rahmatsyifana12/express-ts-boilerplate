@@ -14,7 +14,6 @@ async function errorHandling(
         err.stack = error.stack;
     }
 
-    console.log(err.stack);
     return sendResponse(res, ResponseError.toResponseBody(err));
 }
 

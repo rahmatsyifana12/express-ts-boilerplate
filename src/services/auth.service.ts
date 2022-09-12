@@ -23,6 +23,7 @@ class AuthService {
         }
 
         user.password = await this.hashPassword(user.password);
+        user.createdAt = new Date();
 
         await User.save(user);
     }
@@ -31,7 +32,7 @@ class AuthService {
         const user = await User.findOneBy({ email });
         if (!user) {
             throw new ResponseError(
-                'Account does not exists!', StatusCodes.BAD_REQUEST);
+                "Account doesn't exists!", StatusCodes.BAD_REQUEST);
         }
 
         const isValidPassword = await bcrypt.compare(password, user.password);

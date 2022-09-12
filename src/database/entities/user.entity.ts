@@ -1,5 +1,5 @@
 import {
-    BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn
+    BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn, Timestamp
 } from 'typeorm';
 import { Todo } from './todo.entity';
 
@@ -20,6 +20,12 @@ export class User extends BaseEntity {
 
     @Column({ name: 'refresh_token', nullable: true, type: String })
     refreshToken!: string | null;
+
+    @Column({ name: 'created_at' })
+    createdAt!: Date;
+
+    @Column({ name: 'updated_at', nullable: true })
+    updatedAt!: Date;
 
     @OneToMany(() => Todo, (todo) => todo.user)
     todos!: Todo[];

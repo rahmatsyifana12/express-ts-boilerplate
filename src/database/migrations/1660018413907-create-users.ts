@@ -10,6 +10,8 @@ export class createUsers1660018413907 implements MigrationInterface {
                 "password" VARCHAR(64) NOT NULL,
                 "name" VARCHAR(64) NOT NULL,
                 "refresh_token" VARCHAR(255),
+                "created_at" TIMESTAMP NOT NULL,
+                "updated_at" TIMESTAMP,
 
                 PRIMARY KEY ("id")
             )`);
