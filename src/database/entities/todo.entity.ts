@@ -19,6 +19,12 @@ export class Todo extends BaseEntity {
     @Column({ length: 64 })
     content!: string;
 
+    @Column({ name: 'created_at' })
+    createdAt!: Date;
+
+    @Column({ name: 'updated_at' })
+    updatedAt!: Date;
+
     @ManyToOne(() => User, (user) => user.todos)
     @JoinColumn({ name: 'user_id' })
     user!: User;

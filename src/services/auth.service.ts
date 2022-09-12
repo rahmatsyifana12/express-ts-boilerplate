@@ -23,7 +23,9 @@ class AuthService {
         }
 
         user.password = await this.hashPassword(user.password);
+
         user.createdAt = new Date();
+        user.updatedAt = new Date();
 
         await User.save(user);
     }
