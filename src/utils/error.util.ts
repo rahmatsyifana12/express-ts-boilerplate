@@ -53,4 +53,11 @@ export const Errors = {
     USER_NOT_FOUND: new ResponseError(
         'Cannot find user',
         StatusCodes.NOT_FOUND),
+
+    /**
+     * Cannot find the todolist
+     */
+    TODO_NOT_FOUND: new ResponseError(
+        'Cannot find todo',
+        StatusCodes.NOT_FOUND),
 };
