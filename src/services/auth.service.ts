@@ -97,7 +97,6 @@ class AuthService {
 
     async getToken(req: Request, tokenType: TokenType) {
         let token: string;
-        console.log(req.cookies);
 
         if (tokenType === 'ACCESS') {
             const rawToken = req.header('authorization');

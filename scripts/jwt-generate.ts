@@ -29,7 +29,6 @@ function createJwtSecrets() {
 
     content = lines.join('\n');
     fs.writeFileSync(filePath, content, { encoding: 'utf-8' });
-    console.log(content);
 }
 
 createJwtSecrets();
