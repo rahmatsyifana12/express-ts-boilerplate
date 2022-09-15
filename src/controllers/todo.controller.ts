@@ -16,7 +16,6 @@ class TodoController {
 
         return sendResponse(res, {
             statusCode: StatusCodes.CREATED,
-            success: true,
             message: 'Successfully created a todo'
         });
     }

@@ -30,8 +30,6 @@ class AuthController {
         });
 
         return sendResponse(res, {
-            statusCode: StatusCodes.OK,
-            success: true,
             message: 'Successfully logged in',
             data: { accessToken }
         });
@@ -46,7 +44,6 @@ class AuthController {
 
         return sendResponse(res, {
             statusCode: StatusCodes.ACCEPTED,
-            success: true,
             message: 'Successfully logged out'
         });
     }
@@ -56,8 +53,6 @@ class AuthController {
         const accessToken = await authService.refresh(userPayload!);
 
         return sendResponse(res, {
-            statusCode: StatusCodes.OK,
-            success: true,
             message: 'Successfully generated a new access token',
             data: { accessToken }
         });
