@@ -4,7 +4,11 @@ import { authService } from '../services/auth.service';
 import { todoService } from '../services/todo.service';
 import { sendResponse } from '../utils/api.util';
 import { validate } from '../utils/validate.util';
-import { addTodoScehma, todoIdSchema } from '../validations/todo.validate';
+import {
+    addTodoScehma,
+    todoIdSchema,
+    updateTodoScehma
+} from '../validations/todo.validate';
 
 class TodoController {
 
@@ -12,11 +16,23 @@ class TodoController {
         const userPayload = await authService.getTokenPayload(req, 'ACCESS');
         const body = validate(req, addTodoScehma, 'body');
 
-        await todoService.add(body, userPayload!.userId); // userId still dummy
+        await todoService.add(userPayload!.userId, body); // userId still dummy
 
         return sendResponse(res, {
             statusCode: StatusCodes.CREATED,
             message: 'Successfully created a todo'
+        });
+    }
+
+    async update(req: Request, res: Response) {
+        const userPayload = await authService.getTokenPayload(req, 'ACCESS');
+        const body = validate(req, updateTodoScehma, 'body');
+        const params = validate(req, todoIdSchema, 'params');
+
+        await todoService.update(params.todoId, userPayload!.userId, body);
+
+        return sendResponse(res, {
+            message: 'Successfully updated a todo'
         });
     }
 

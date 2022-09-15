@@ -12,6 +12,7 @@ router.post('/v1/auth/refresh', authenticate('REFRESH'),
     authController.refresh);
 
 router.post('/v1/todos', authenticate('ACCESS'), todoController.add);
+router.put('/v1/todos/:todoId', authenticate('ACCESS'), todoController.update);
 router.delete('/v1/todos/:todoId',
     authenticate('ACCESS'), todoController.delete);
 
