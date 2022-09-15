@@ -1,10 +1,10 @@
 import { Todo } from '../database/entities/todo.entity';
 import { Errors } from '../utils/error.util';
-import type { AddTodoType } from '../validations/todo.validate';
+import type { TodoType } from '../validations/todo.validate';
 
 class TodoService {
 
-    async add(rawTodo: AddTodoType, userId: number) {
+    async add(rawTodo: TodoType, userId: number) {
         const todo = Todo.create({ userId, ...rawTodo });
 
         todo.createdAt = new Date();
