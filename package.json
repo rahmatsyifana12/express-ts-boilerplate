@@ -4,7 +4,7 @@
     "author": "rahmat",
     "license": "MIT",
     "scripts": {
-        "dev": "ts-node ./src/app.ts",
+        "dev": "ts-node ./src/server.ts",
         "jwt:generate": "ts-node ./scripts/jwt-generate.ts",
         "typeorm": "typeorm-ts-node-commonjs",
         "migration:create": "ts-node ./scripts/migration.ts CREATE",

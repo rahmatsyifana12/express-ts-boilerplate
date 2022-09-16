@@ -130,9 +130,12 @@ class AuthService {
             return;
         }
 
-        const payload = jwt.verify(token, secret) as JwtPayload;
-
-        return { userId: payload.userId } as UserPayload;
+        try {
+            const payload = jwt.verify(token, secret) as JwtPayload;
+            return { userId: payload.userId } as UserPayload;
+        } catch (error) {
+            // return undefined
+        }
     }
 
 }
