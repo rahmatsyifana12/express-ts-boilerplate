@@ -15,7 +15,7 @@ class TodoController {
         const userPayload = req.userPayload;
         const body = validate(req, addTodoScehma, 'body');
 
-        await todoService.add(userPayload!.userId, body); // userId still dummy
+        await todoService.add(userPayload!.userId, body);
 
         return sendResponse(res, {
             statusCode: StatusCodes.CREATED,
@@ -28,7 +28,7 @@ class TodoController {
         const todos = await todoService.getAll(userPayload!.userId);
 
         return sendResponse(res, {
-            message: 'successfully retrieved all todos',
+            message: 'Successfully retrieved all todos',
             data: { todos }
         });
     }
