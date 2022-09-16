@@ -13,6 +13,12 @@ class TodoService {
         await Todo.save(todo);
     }
 
+    async getAll(userId: number) {
+        const todos = await Todo.findBy({ userId });
+
+        return todos;
+    }
+
     async update(todoId: number, userId: number, rawTodo: TodoType) {
         const { title, content } = rawTodo;
         const todo = await Todo.findOneBy({ id: todoId });

@@ -24,6 +24,16 @@ class TodoController {
         });
     }
 
+    async getAll(req: Request, res: Response) {
+        const userPayload = await authService.getTokenPayload(req, 'ACCESS');
+        const todos = await todoService.getAll(userPayload!.userId);
+
+        return sendResponse(res, {
+            message: 'successfully retrieved all todos',
+            data: { todos }
+        });
+    }
+
     async update(req: Request, res: Response) {
         const userPayload = await authService.getTokenPayload(req, 'ACCESS');
         const body = validate(req, updateTodoScehma, 'body');
