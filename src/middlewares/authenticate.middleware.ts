@@ -10,6 +10,7 @@ function authenticate(tokenType: TokenType) {
             throw Errors.NO_SESSION;
         }
 
+        req.userPayload = payload;
         return next();
     };
 }

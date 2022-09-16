@@ -10,7 +10,8 @@ class UserController {
         const user = await userService.getProfile(userPayload!.userId);
 
         return sendResponse(res, {
-            message: 'Successfully retrieved user profile'
+            message: 'Successfully retrieved user profile',
+            data: { user }
         });
     }
 
