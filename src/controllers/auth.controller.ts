@@ -48,7 +48,7 @@ class AuthController {
     }
 
     async refresh(req: Request, res: Response) {
-        const userPayload = await authService.getTokenPayload(req, 'REFRESH');
+        const userPayload = req.userPayload;
         const accessToken = await authService.refresh(userPayload!);
 
         return sendResponse(res, {

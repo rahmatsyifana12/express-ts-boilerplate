@@ -1,6 +1,5 @@
 import type { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { authService } from '../services/auth.service';
 import { todoService } from '../services/todo.service';
 import { sendResponse } from '../utils/api.util';
 import { validate } from '../utils/validate.util';
@@ -13,7 +12,7 @@ import {
 class TodoController {
 
     async add(req: Request, res: Response) {
-        const userPayload = await authService.getTokenPayload(req, 'ACCESS');
+        const userPayload = req.userPayload;
         const body = validate(req, addTodoScehma, 'body');
 
         await todoService.add(userPayload!.userId, body); // userId still dummy
@@ -25,7 +24,7 @@ class TodoController {
     }
 
     async getAll(req: Request, res: Response) {
-        const userPayload = await authService.getTokenPayload(req, 'ACCESS');
+        const userPayload = req.userPayload;
         const todos = await todoService.getAll(userPayload!.userId);
 
         return sendResponse(res, {
@@ -35,7 +34,7 @@ class TodoController {
     }
 
     async update(req: Request, res: Response) {
-        const userPayload = await authService.getTokenPayload(req, 'ACCESS');
+        const userPayload = req.userPayload;
         const body = validate(req, updateTodoScehma, 'body');
         const params = validate(req, todoIdSchema, 'params');
 
@@ -47,7 +46,7 @@ class TodoController {
     }
 
     async delete(req: Request, res: Response) {
-        const userPayload = await authService.getTokenPayload(req, 'ACCESS');
+        const userPayload = req.userPayload;
         const params = validate(req, todoIdSchema, 'params');
 
         await todoService.delete(params.todoId, userPayload!.userId);
