@@ -1,5 +1,4 @@
 import { AppDataSource } from '../src/database/data-source';
-import { Comment } from '../src/database/entities/comment.entity';
 import { Todo } from '../src/database/entities/todo.entity';
 import { User } from '../src/database/entities/user.entity';
 import { authService } from '../src/services/auth.service';
@@ -10,8 +9,13 @@ async function runSeed() {
     const users: User[] = [
         User.create({
             email: 'rahmat@mail.com',
-            password: await hashPassword('rahmat'),
-            name: 'Rahmat'
+            password: await hashPassword('rahmat123'),
+            name: 'Rahmat S.'
+        }),
+        User.create({
+            email: 'rafi@mail.com',
+            password: await hashPassword('rafi123'),
+            name: 'M. Rafi'
         })
     ];
     await User.save(users);
@@ -21,21 +25,24 @@ async function runSeed() {
             userId: 1,
             title: 'Todo 1',
             content: 'Hello world from todo 1.'
+        }),
+        Todo.create({
+            userId: 1,
+            title: 'Todo 2',
+            content: 'Hello world from todo 2.'
+        }),
+        Todo.create({
+            userId: 2,
+            title: 'Todo 3',
+            content: 'Hello world from todo 3.'
+        }),
+        Todo.create({
+            userId: 2,
+            title: 'Todo 4',
+            content: 'Hello world from todo 4.'
         })
     ];
     await Todo.save(todos);
-
-    const comments: Comment[] = [
-        Comment.create({
-            todoId: 1,
-            content: 'Soo good'
-        }),
-        Comment.create({
-            todoId: 1,
-            content: 'Soo fun haha'
-        })
-    ];
-    await Comment.save(comments);
 }
 
 AppDataSource.initialize()
