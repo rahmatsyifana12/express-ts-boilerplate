@@ -1,3 +1,8 @@
+## About
+This is my personal boilerplate that i use to develop my personal/team projects.
+
+Originally created and developed by my friend [Alvian D.Q.](https://github.com/Alviannn), and modified according to my own needs.
+
 ## Getting Started
 1. Make sure you have installed [Yarn](https://classic.yarnpkg.com/lang/en/), [Node.js](https://nodejs.org/en/) and [PostgreSQL](https://www.postgresql.org/download/).
 2. Clone the repo
