@@ -16,6 +16,7 @@ router.post('/v1/auth/refresh', authenticate('REFRESH'),
 // users
 router.get('/v1/users/profile', authenticate('ACCESS'),
     userController.getProfile);
+router.put('/v1/users', authenticate('ACCESS'), userController.update);
 
 // todos
 router.post('/v1/todos', authenticate('ACCESS'), todoController.add);

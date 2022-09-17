@@ -11,6 +11,12 @@ export interface LoginType {
     password: string;
 }
 
+export interface UserType {
+    email: string;
+    password: string;
+    name: string;
+}
+
 export const registerSchema = joi.object<RegisterType>({
     email: joi.string()
         .email()
@@ -18,10 +24,12 @@ export const registerSchema = joi.object<RegisterType>({
         .required(),
 
     name: joi.string()
+        .min(3)
         .max(64)
         .required(),
 
     password: joi.string()
+        .min(3)
         .max(64)
         .required()
 });
@@ -33,4 +41,13 @@ export const loginSchema = joi.object<LoginType>({
 
     password: joi.string()
         .required()
+});
+
+export const updateUserSchema = joi.object<UserType>({
+    name: joi.string()
+        .max(64),
+
+    password: joi.string()
+        .min(3)
+        .max(64)
 });
