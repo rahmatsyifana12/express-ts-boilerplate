@@ -10,12 +10,16 @@ async function runSeed() {
         User.create({
             email: 'rahmat@mail.com',
             password: await hashPassword('rahmat123'),
-            name: 'Rahmat S.'
+            name: 'Rahmat S.',
+            createdAt: new Date(),
+            updatedAt: new Date()
         }),
         User.create({
             email: 'rafi@mail.com',
             password: await hashPassword('rafi123'),
-            name: 'M. Rafi'
+            name: 'M. Rafi',
+            createdAt: new Date(),
+            updatedAt: new Date()
         })
     ];
     await User.save(users);
@@ -24,22 +28,30 @@ async function runSeed() {
         Todo.create({
             userId: 1,
             title: 'Todo 1',
-            content: 'Hello world from todo 1.'
+            content: 'Hello world from todo 1.',
+            createdAt: new Date(),
+            updatedAt: new Date()
         }),
         Todo.create({
             userId: 1,
             title: 'Todo 2',
-            content: 'Hello world from todo 2.'
+            content: 'Hello world from todo 2.',
+            createdAt: new Date(),
+            updatedAt: new Date()
         }),
         Todo.create({
             userId: 2,
             title: 'Todo 3',
-            content: 'Hello world from todo 3.'
+            content: 'Hello world from todo 3.',
+            createdAt: new Date(),
+            updatedAt: new Date()
         }),
         Todo.create({
             userId: 2,
             title: 'Todo 4',
-            content: 'Hello world from todo 4.'
+            content: 'Hello world from todo 4.',
+            createdAt: new Date(),
+            updatedAt: new Date()
         })
     ];
     await Todo.save(todos);
