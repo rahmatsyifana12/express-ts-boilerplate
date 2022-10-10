@@ -14,7 +14,7 @@ export class createTodos1660020294608 implements MigrationInterface {
                 updated_at TIMESTAMP NOT NULL,
 
                 PRIMARY KEY (id),
-                FOREIGN KEY (user_id) REFERENCES users(id)
+                FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
             );`);
     }
 
