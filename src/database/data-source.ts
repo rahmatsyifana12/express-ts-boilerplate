@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import config from '../configs/config';
 
 export const AppDataSource = new DataSource({
-    type: 'mysql',
+    type: 'postgres',
     host: config.db.host,
     port: config.db.port,
     username: config.db.username,
