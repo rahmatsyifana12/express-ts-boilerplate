@@ -22,7 +22,5 @@ router.put('/v1/users', authenticate('ACCESS'), userController.update);
 router.post('/v1/todos', authenticate('ACCESS'), todoController.add);
 router.get('/v1/todos', authenticate('ACCESS'), todoController.getAll);
 router.put('/v1/todos/:todoId', authenticate('ACCESS'), todoController.update);
-router.delete('/v1/todos/:todoId',
-    authenticate('ACCESS'), todoController.delete);
 
 export default router;
