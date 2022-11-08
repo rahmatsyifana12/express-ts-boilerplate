@@ -3,7 +3,6 @@
     "target": "ES6",
     "module": "CommonJS",
     "outDir": "./dist",
-    "baseUrl": "./src",
     "moduleResolution": "Node",
     "strict": true,
     "removeComments": true,
@@ -12,6 +11,6 @@
     "noFallthroughCasesInSwitch": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "skipLibCheck": true,
+    "skipLibCheck": true
   }
 }
