@@ -153,6 +153,7 @@
         ],
         "max-len": [
             "error",
+            120,
             {
                 // urls can be long, although make it short if possible
                 "ignoreUrls": true,
