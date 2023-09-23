@@ -18,7 +18,8 @@ const config = {
         refreshExpire: env.JWT_REFRESH_EXPIRE!
     },
     hashRounds: 10,
-    port: parseInt(env.PORT!)
+    port: parseInt(env.PORT!),
+    isDev: env.NODE_ENV === 'development'
 };
 
 export default config;
