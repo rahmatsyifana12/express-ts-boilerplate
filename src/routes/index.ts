@@ -7,7 +7,8 @@ import authenticate from '../middlewares/authenticate.middleware';
 const router = Router();
 
 // health
-router.get('/v1/health', (_, res) => {
+router.get('/v1/health', async (_, res) => {
+    await new Promise((resolve) => setTimeout(resolve, 3000));
     res.json({ status: 'ok' });
 });
 

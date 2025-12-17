@@ -34,6 +34,14 @@ export const Errors = {
         StatusCodes.INTERNAL_SERVER_ERROR),
 
     /**
+     * Timeout error
+     */
+    TIMEOUT: new ResponseError(
+        'Response timeout',
+        StatusCodes.GATEWAY_TIMEOUT
+    ),
+
+    /**
      * User doesn't have JWT or authentication token
      */
     NO_SESSION: new ResponseError(
