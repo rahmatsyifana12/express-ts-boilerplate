@@ -6,6 +6,11 @@ import authenticate from '../middlewares/authenticate.middleware';
 
 const router = Router();
 
+// health
+router.get('/v1/health', (_, res) => {
+    res.json({ status: 'ok' });
+});
+
 // auths
 router.post('/v1/auth/register', authController.register);
 router.post('/v1/auth/login', authController.login);
